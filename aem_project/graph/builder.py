@@ -4,18 +4,18 @@ from core.market import AutomatedMarketMaker
 from graph.nodes import get_operative_node, get_evaluator_node, get_broker_node, get_devops_node, bankruptcy_node
 from graph.edges import router_broker_or_devops, router_continue
 
-def build_aem_graph(amm: AutomatedMarketMaker, SessionLocal) -> StateGraph:
+def build_aem_graph(amm: AutomatedMarketMaker) -> StateGraph:
     """
     Construye y compila el StateGraph para la simulación AEM,
-    inyectando la instancia de AMM y el Session Local para persistencia.
+    inyectando la instancia de AMM. (Sin base de datos, 100% cliente HTTP).
     """
     graph = StateGraph(AgenticState)
     
     # Inyectar dependencias a los nodos mediante factories
     operative = get_operative_node(amm)
-    evaluator = get_evaluator_node(SessionLocal)
-    broker = get_broker_node(amm, SessionLocal)
-    devops = get_devops_node(SessionLocal)
+    evaluator = get_evaluator_node()
+    broker = get_broker_node(amm)
+    devops = get_devops_node()
     
     # Añadiendo nodos
     graph.add_node("operative", operative)

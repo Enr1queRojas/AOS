@@ -1,15 +1,10 @@
 from core.state import AgenticState
 from core.market import AutomatedMarketMaker
 from graph.builder import build_aem_graph
-from db.session import init_db, SessionLocal
 
 def main():
-    print("🚀 Iniciando Simulación AEM (Agentic Economic Market) con Ledger...")
+    print("🚀 Iniciando Simulación AEM (Agentic Economic Market) Client...")
     print("-" * 50)
-    
-    # 0. Inicializar Base de Datos (SQLAlchemy)
-    print("📦 Inicializando base de datos SQLite...")
-    init_db()
 
     # 1. Eliminar Global State e instanciar controladamente
     amm = AutomatedMarketMaker(
@@ -29,8 +24,8 @@ def main():
         history=["Inicio: Agente instanciado en el mercado."]
     )
 
-    # 3. Construir grafo con Inyección de Dependencia (AMM + BD)
-    app = build_aem_graph(amm, SessionLocal)
+    # 3. Construir grafo con Inyección de Dependencia (AMM)
+    app = build_aem_graph(amm)
     
     # 4. Ejecutar la Simulación
     final_state = app.invoke(initial_state)

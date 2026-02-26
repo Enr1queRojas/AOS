@@ -22,9 +22,9 @@ def get_macro_kpis(db: Session = Depends(get_db)):
     total_balance = db.query(func.sum(models.AgentRecord.wallet_balance)).scalar() or 0.0
     
     return {
-        "success_rate_percent": round(success_rate, 2),
+        "global_success_rate": round(success_rate, 2),
         "avg_system_latency_ms": avg_latency,
-        "total_balance_circulation": round(total_balance, 2)
+        "daily_usd_burn_rate": round(total_balance, 2)
     }
 
 @router.get("/ledger", response_model=List[LedgerTransactionResponse])

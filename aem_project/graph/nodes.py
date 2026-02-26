@@ -71,7 +71,7 @@ def get_operative_node(amm=None):
     return operative_node
 
 
-def get_evaluator_node(SessionLocal=None):
+def get_evaluator_node():
     def evaluator_node(state: AgenticState) -> Dict[str, Any]:
         """
         Nodo Evaluador (Cliente HTTP):
@@ -131,7 +131,7 @@ def get_evaluator_node(SessionLocal=None):
     return evaluator_node
 
 
-def get_broker_node(amm=None, SessionLocal=None):
+def get_broker_node(amm=None):
     def broker_node(state: AgenticState) -> Dict[str, Any]:
         """
         Nodo Broker Deprecado: Actúa de pasarela. El mercado se actualiza en el server con su propio update_prices.
@@ -142,7 +142,7 @@ def get_broker_node(amm=None, SessionLocal=None):
     return broker_node
 
 
-def get_devops_node(SessionLocal=None):
+def get_devops_node():
     def devops_node(state: AgenticState) -> Dict[str, Any]:
         """
         Nodo DevOps (Cliente HTTP): Pide un refactor a la API.

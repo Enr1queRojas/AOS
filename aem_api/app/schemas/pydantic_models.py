@@ -9,6 +9,9 @@ class SettleRequest(BaseModel):
     task_quality_q: float
     is_failure: bool
 
+class RefactorRequest(BaseModel):
+    agent_id: str
+
 class AgentBase(BaseModel):
     wallet_balance: float
     skill_level: float

@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./aem.db"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./aem_ledger.db"
 
 # connect_args is needed only for SQLite
 engine = create_engine(
