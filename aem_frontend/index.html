@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>AEM AI Trading Terminal</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AEM AI Trading Terminal</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -37,22 +44,26 @@
             },
         }
     </script>
-<style>
+    <style>
         /* Custom scrollbar for webkit */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #09090b; 
+            background: #09090b;
         }
+
         ::-webkit-scrollbar-thumb {
-            background: #27272a; 
+            background: #27272a;
             border-radius: 3px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
-            background: #3f3f46; 
+            background: #3f3f46;
         }
+
         .glass-effect {
             background: rgba(18, 18, 20, 0.7);
             backdrop-filter: blur(10px);
@@ -60,321 +71,393 @@
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex overflow-hidden">
-<!-- Sidebar -->
-<aside class="w-64 h-screen border-r border-border-dark flex flex-col bg-surface-dark/50 shrink-0">
-<div class="p-6 flex items-center gap-3 border-b border-border-dark/50">
-<div class="size-10 rounded-lg bg-gradient-to-br from-primary to-emerald-800 flex items-center justify-center shadow-[0_0_15px_rgba(13,242,89,0.3)]">
-<span class="material-symbols-outlined text-black font-bold">terminal</span>
-</div>
-<div>
-<h1 class="font-bold text-lg tracking-tight">AEM Terminal</h1>
-<p class="text-xs text-slate-400 font-mono">v2.4.0-stable</p>
-</div>
-</div>
-<nav class="flex-1 px-4 py-6 space-y-2">
-<!-- Active Item -->
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 border border-primary/20 text-primary group transition-all duration-200" href="#">
-<span class="material-symbols-outlined">monitoring</span>
-<span class="font-medium text-sm">Macro Dashboard</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-white/5 transition-all duration-200 group" href="#">
-<span class="material-symbols-outlined group-hover:text-primary transition-colors">smart_toy</span>
-<span class="font-medium text-sm">Agent Arena</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-white/5 transition-all duration-200 group" href="#">
-<span class="material-symbols-outlined group-hover:text-primary transition-colors">receipt_long</span>
-<span class="font-medium text-sm">Ledger Audit</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-white/5 transition-all duration-200 group" href="#">
-<span class="material-symbols-outlined group-hover:text-primary transition-colors">settings</span>
-<span class="font-medium text-sm">System Settings</span>
-</a>
-</nav>
-<div class="p-4 border-t border-border-dark/50">
-<div class="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
-<div class="size-8 rounded-full bg-slate-700 bg-center bg-cover" data-alt="User Avatar Profile Picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC055JisbznEdSMvFdDzmUfuhpOKKGk0tUcUDFmDAWl1dTF4NAbFENPXQ6dqe1nFs56vSpweUNCBOT7dnHzyZOdoDl8Yy408yL2YQQT-_RCNXlxVTdXQEQYTKuR-qsHWvVadNjix_P9YBH6A1NzecDY7NA9gGx_nKyTHbZ5gT72JODjmsjUOKHN3WYwVoRD1wdkFeHna3qEr03N5EVneOrkKIYDY-syzwxIEmjuasXbZndR-v9qHT1Pus2djlp41soJD9xvbu2_1koN')"></div>
-<div class="flex flex-col overflow-hidden">
-<span class="text-sm font-medium truncate">Admin User</span>
-<span class="text-xs text-slate-400 truncate">admin@aem.market</span>
-</div>
-</div>
-</div>
-</aside>
-<!-- Main Content -->
-<main class="flex-1 flex flex-col h-screen overflow-hidden relative">
-<!-- Background Grid Pattern -->
-<div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 24px 24px;"></div>
-<!-- Header / KPI Section -->
-<header class="p-6 pb-2 shrink-0 z-10">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-<!-- KPI 1 -->
-<div class="bg-surface-dark border border-border-dark p-5 rounded-lg relative overflow-hidden group hover:border-accent-red/50 transition-colors duration-300">
-<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-<span class="material-symbols-outlined text-4xl text-accent-red">local_fire_department</span>
-</div>
-<p class="text-slate-400 text-sm font-medium mb-1">Daily USD Burn Rate</p>
-<div class="flex items-end gap-3">
-<h2 class="text-2xl font-bold tracking-tight text-slate-100">$12,450.00</h2>
-<span class="text-accent-red text-sm font-medium flex items-center bg-accent-red/10 px-1.5 py-0.5 rounded">
-<span class="material-symbols-outlined text-sm mr-0.5">trending_up</span> 12%
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="w-64 h-screen border-r border-border-dark flex flex-col bg-surface-dark/50 shrink-0">
+        <div class="p-6 flex items-center gap-3 border-b border-border-dark/50">
+            <div
+                class="size-10 rounded-lg bg-gradient-to-br from-primary to-emerald-800 flex items-center justify-center shadow-[0_0_15px_rgba(13,242,89,0.3)]">
+                <span class="material-symbols-outlined text-black font-bold">terminal</span>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg tracking-tight">AEM Terminal</h1>
+                <p class="text-xs text-slate-400 font-mono">v2.4.0-stable</p>
+            </div>
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <!-- Active Item -->
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 border border-primary/20 text-primary group transition-all duration-200"
+                href="#">
+                <span class="material-symbols-outlined">monitoring</span>
+                <span class="font-medium text-sm">Macro Dashboard</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-white/5 transition-all duration-200 group"
+                href="#">
+                <span class="material-symbols-outlined group-hover:text-primary transition-colors">smart_toy</span>
+                <span class="font-medium text-sm">Agent Arena</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-white/5 transition-all duration-200 group"
+                href="#">
+                <span class="material-symbols-outlined group-hover:text-primary transition-colors">receipt_long</span>
+                <span class="font-medium text-sm">Ledger Audit</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-white/5 transition-all duration-200 group"
+                href="#">
+                <span class="material-symbols-outlined group-hover:text-primary transition-colors">settings</span>
+                <span class="font-medium text-sm">System Settings</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-border-dark/50">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
+                <div class="size-8 rounded-full bg-slate-700 bg-center bg-cover" data-alt="User Avatar Profile Picture"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC055JisbznEdSMvFdDzmUfuhpOKKGk0tUcUDFmDAWl1dTF4NAbFENPXQ6dqe1nFs56vSpweUNCBOT7dnHzyZOdoDl8Yy408yL2YQQT-_RCNXlxVTdXQEQYTKuR-qsHWvVadNjix_P9YBH6A1NzecDY7NA9gGx_nKyTHbZ5gT72JODjmsjUOKHN3WYwVoRD1wdkFeHna3qEr03N5EVneOrkKIYDY-syzwxIEmjuasXbZndR-v9qHT1Pus2djlp41soJD9xvbu2_1koN')">
+                </div>
+                <div class="flex flex-col overflow-hidden">
+                    <span class="text-sm font-medium truncate">Admin User</span>
+                    <span class="text-xs text-slate-400 truncate">admin@aem.market</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <!-- Background Grid Pattern -->
+        <div class="absolute inset-0 pointer-events-none opacity-[0.03]"
+            style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 24px 24px;"></div>
+        <!-- Header / KPI Section -->
+        <header class="p-6 pb-2 shrink-0 z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <!-- KPI 1 -->
+                <div
+                    class="bg-surface-dark border border-border-dark p-5 rounded-lg relative overflow-hidden group hover:border-accent-red/50 transition-colors duration-300">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="material-symbols-outlined text-4xl text-accent-red">local_fire_department</span>
+                    </div>
+                    <p class="text-slate-400 text-sm font-medium mb-1">Daily USD Burn Rate</p>
+                    <div class="flex items-end gap-3">
+                        <h2 id="kpi-burn-rate" class="text-2xl font-bold tracking-tight text-slate-100">$0.00</h2>
+                        <span
+                            class="text-accent-red text-sm font-medium flex items-center bg-accent-red/10 px-1.5 py-0.5 rounded">
+                            <span class="material-symbols-outlined text-sm mr-0.5">trending_up</span> 12%
                         </span>
-</div>
-</div>
-<!-- KPI 2 -->
-<div class="bg-surface-dark border border-border-dark p-5 rounded-lg relative overflow-hidden group hover:border-primary/50 transition-colors duration-300">
-<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-<span class="material-symbols-outlined text-4xl text-primary">check_circle</span>
-</div>
-<p class="text-slate-400 text-sm font-medium mb-1">Global Agent Success Rate</p>
-<div class="flex items-end gap-3">
-<h2 class="text-2xl font-bold tracking-tight text-primary">94.2%</h2>
-<span class="text-primary text-sm font-medium flex items-center bg-primary/10 px-1.5 py-0.5 rounded">
-<span class="material-symbols-outlined text-sm mr-0.5">trending_up</span> 2.4%
+                    </div>
+                </div>
+                <!-- KPI 2 -->
+                <div
+                    class="bg-surface-dark border border-border-dark p-5 rounded-lg relative overflow-hidden group hover:border-primary/50 transition-colors duration-300">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="material-symbols-outlined text-4xl text-primary">check_circle</span>
+                    </div>
+                    <p class="text-slate-400 text-sm font-medium mb-1">Global Agent Success Rate</p>
+                    <div class="flex items-end gap-3">
+                        <h2 id="kpi-success-rate" class="text-2xl font-bold tracking-tight text-primary">0.0%</h2>
+                        <span
+                            class="text-primary text-sm font-medium flex items-center bg-primary/10 px-1.5 py-0.5 rounded">
+                            <span class="material-symbols-outlined text-sm mr-0.5">trending_up</span> 2.4%
                         </span>
-</div>
-</div>
-<!-- KPI 3 -->
-<div class="bg-surface-dark border border-border-dark p-5 rounded-lg relative overflow-hidden group hover:border-accent-cyan/50 transition-colors duration-300">
-<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-<span class="material-symbols-outlined text-4xl text-accent-cyan">speed</span>
-</div>
-<p class="text-slate-400 text-sm font-medium mb-1">Avg System Latency</p>
-<div class="flex items-end gap-3">
-<h2 class="text-2xl font-bold tracking-tight text-accent-cyan">142ms</h2>
-<span class="text-primary text-sm font-medium flex items-center bg-primary/10 px-1.5 py-0.5 rounded">
-<span class="material-symbols-outlined text-sm mr-0.5">arrow_downward</span> 5%
+                    </div>
+                </div>
+                <!-- KPI 3 -->
+                <div
+                    class="bg-surface-dark border border-border-dark p-5 rounded-lg relative overflow-hidden group hover:border-accent-cyan/50 transition-colors duration-300">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="material-symbols-outlined text-4xl text-accent-cyan">speed</span>
+                    </div>
+                    <p class="text-slate-400 text-sm font-medium mb-1">Avg System Latency</p>
+                    <div class="flex items-end gap-3">
+                        <h2 id="kpi-latency" class="text-2xl font-bold tracking-tight text-accent-cyan">0ms</h2>
+                        <span
+                            class="text-primary text-sm font-medium flex items-center bg-primary/10 px-1.5 py-0.5 rounded">
+                            <span class="material-symbols-outlined text-sm mr-0.5">arrow_downward</span> 5%
                         </span>
-</div>
-</div>
-</div>
-</header>
-<!-- Scrollable Content Area -->
-<div class="flex-1 overflow-y-auto px-6 pb-6 space-y-6 z-10">
-<!-- Top Section: Live Chart -->
-<section class="bg-surface-dark border border-border-dark rounded-xl p-6 relative">
-<div class="flex justify-between items-center mb-6">
-<div>
-<h3 class="text-slate-100 font-bold text-lg">Live Market Prices (AMM)</h3>
-<p class="text-slate-400 text-sm">Real-time token valuation across liquidity pools</p>
-</div>
-<div class="flex items-center gap-4">
-<div class="flex items-center gap-2 text-sm">
-<span class="size-2 rounded-full bg-primary shadow-[0_0_8px_#0df259]"></span>
-<span class="text-slate-300">GPT-3.5</span>
-</div>
-<div class="flex items-center gap-2 text-sm">
-<span class="size-2 rounded-full bg-accent-cyan shadow-[0_0_8px_#06b6d4]"></span>
-<span class="text-slate-300">GPT-4o</span>
-</div>
-<div class="flex items-center gap-2 text-sm">
-<span class="size-2 rounded-full bg-accent-purple shadow-[0_0_8px_#a855f7]"></span>
-<span class="text-slate-300">DevOps Refactor</span>
-</div>
-</div>
-</div>
-<!-- Chart Visualization (SVG) -->
-<div class="h-[280px] w-full relative">
-<!-- Grid Lines -->
-<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
-<div class="w-full h-px bg-border-dark border-dashed"></div>
-<div class="w-full h-px bg-border-dark border-dashed"></div>
-<div class="w-full h-px bg-border-dark border-dashed"></div>
-<div class="w-full h-px bg-border-dark border-dashed"></div>
-<div class="w-full h-px bg-border-dark border-dashed"></div>
-</div>
-<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 1000 300">
-<defs>
-<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
-<stop offset="0%" style="stop-color:#0df259;stop-opacity:0.2"></stop>
-<stop offset="100%" style="stop-color:#0df259;stop-opacity:0"></stop>
-</lineargradient>
-<lineargradient id="grad2" x1="0%" x2="0%" y1="0%" y2="100%">
-<stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.2"></stop>
-<stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0"></stop>
-</lineargradient>
-</defs>
-<!-- Line 1: GPT-3.5 (Emerald) -->
-<path class="drop-shadow-[0_0_5px_rgba(13,242,89,0.5)]" d="M0,150 Q100,100 200,180 T400,120 T600,200 T800,80 T1000,160" fill="none" stroke="#0df259" stroke-width="2"></path>
-<path d="M0,150 Q100,100 200,180 T400,120 T600,200 T800,80 T1000,160 V300 H0 Z" fill="url(#grad1)"></path>
-<!-- Line 2: GPT-4o (Cyan) -->
-<path class="drop-shadow-[0_0_5px_rgba(6,182,212,0.5)]" d="M0,220 Q150,180 300,240 T500,100 T700,180 T900,140 T1000,100" fill="none" stroke="#06b6d4" stroke-width="2"></path>
-<path d="M0,220 Q150,180 300,240 T500,100 T700,180 T900,140 T1000,100 V300 H0 Z" fill="url(#grad2)"></path>
-<!-- Line 3: DevOps (Purple) -->
-<path class="opacity-70" d="M0,80 Q120,130 240,60 T480,150 T720,50 T900,120 T1000,40" fill="none" stroke="#a855f7" stroke-dasharray="5,5" stroke-width="2"></path>
-</svg>
-<!-- X-Axis Labels -->
-<div class="absolute bottom-[-24px] w-full flex justify-between text-xs text-slate-500 font-mono">
-<span>10:00</span>
-<span>10:30</span>
-<span>11:00</span>
-<span>11:30</span>
-<span>12:00</span>
-<span>12:30</span>
-</div>
-</div>
-</section>
-<!-- Middle Section: Agent Arena -->
-<section>
-<div class="flex items-center justify-between mb-4 mt-8">
-<h3 class="text-slate-100 font-bold text-lg flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">smart_toy</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Scrollable Content Area -->
+        <div class="flex-1 overflow-y-auto px-6 pb-6 space-y-6 z-10">
+            <!-- Top Section: Live Chart -->
+            <section class="bg-surface-dark border border-border-dark rounded-xl p-6 relative">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h3 class="text-slate-100 font-bold text-lg">Live Market Prices (AMM)</h3>
+                        <p class="text-slate-400 text-sm">Real-time token valuation across liquidity pools</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="size-2 rounded-full bg-primary shadow-[0_0_8px_#0df259]"></span>
+                            <span class="text-slate-300">GPT-3.5</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="size-2 rounded-full bg-accent-cyan shadow-[0_0_8px_#06b6d4]"></span>
+                            <span class="text-slate-300">GPT-4o</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="size-2 rounded-full bg-accent-purple shadow-[0_0_8px_#a855f7]"></span>
+                            <span class="text-slate-300">DevOps Refactor</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chart Visualization (SVG) -->
+                <div class="h-[280px] w-full relative">
+                    <!-- Grid Lines -->
+                    <div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+                        <div class="w-full h-px bg-border-dark border-dashed"></div>
+                        <div class="w-full h-px bg-border-dark border-dashed"></div>
+                        <div class="w-full h-px bg-border-dark border-dashed"></div>
+                        <div class="w-full h-px bg-border-dark border-dashed"></div>
+                        <div class="w-full h-px bg-border-dark border-dashed"></div>
+                    </div>
+                    <svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 1000 300">
+                        <defs>
+                            <lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0df259;stop-opacity:0.2"></stop>
+                                <stop offset="100%" style="stop-color:#0df259;stop-opacity:0"></stop>
+                            </lineargradient>
+                            <lineargradient id="grad2" x1="0%" x2="0%" y1="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.2"></stop>
+                                <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0"></stop>
+                            </lineargradient>
+                        </defs>
+                        <!-- Line 1: GPT-3.5 (Emerald) -->
+                        <path class="drop-shadow-[0_0_5px_rgba(13,242,89,0.5)]"
+                            d="M0,150 Q100,100 200,180 T400,120 T600,200 T800,80 T1000,160" fill="none" stroke="#0df259"
+                            stroke-width="2"></path>
+                        <path d="M0,150 Q100,100 200,180 T400,120 T600,200 T800,80 T1000,160 V300 H0 Z"
+                            fill="url(#grad1)"></path>
+                        <!-- Line 2: GPT-4o (Cyan) -->
+                        <path class="drop-shadow-[0_0_5px_rgba(6,182,212,0.5)]"
+                            d="M0,220 Q150,180 300,240 T500,100 T700,180 T900,140 T1000,100" fill="none"
+                            stroke="#06b6d4" stroke-width="2"></path>
+                        <path d="M0,220 Q150,180 300,240 T500,100 T700,180 T900,140 T1000,100 V300 H0 Z"
+                            fill="url(#grad2)"></path>
+                        <!-- Line 3: DevOps (Purple) -->
+                        <path class="opacity-70" d="M0,80 Q120,130 240,60 T480,150 T720,50 T900,120 T1000,40"
+                            fill="none" stroke="#a855f7" stroke-dasharray="5,5" stroke-width="2"></path>
+                    </svg>
+                    <!-- X-Axis Labels -->
+                    <div class="absolute bottom-[-24px] w-full flex justify-between text-xs text-slate-500 font-mono">
+                        <span>10:00</span>
+                        <span>10:30</span>
+                        <span>11:00</span>
+                        <span>11:30</span>
+                        <span>12:00</span>
+                        <span>12:30</span>
+                    </div>
+                </div>
+            </section>
+            <!-- Middle Section: Agent Arena -->
+            <section>
+                <div class="flex items-center justify-between mb-4 mt-8">
+                    <h3 class="text-slate-100 font-bold text-lg flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">smart_toy</span>
                         Agent Arena Status
                     </h3>
-<button class="text-xs text-primary hover:underline">View All Agents</button>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Agent Card 1 -->
-<div class="bg-surface-dark border border-border-dark rounded-xl p-5 hover:border-primary/30 transition-all duration-300">
-<div class="flex justify-between items-start mb-4">
-<div class="flex items-center gap-3">
-<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-<span class="material-symbols-outlined text-xl">account_balance_wallet</span>
-</div>
-<div>
-<h4 class="text-slate-100 font-bold">Agent-007</h4>
-<p class="text-xs text-slate-400">High-Freq Trading</p>
-</div>
-</div>
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20 shadow-[0_0_10px_rgba(13,242,89,0.1)]">
-<span class="size-1.5 rounded-full bg-primary mr-1.5 animate-pulse"></span>
+                    <button class="text-xs text-primary hover:underline">View All Agents</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Agent Card 1 -->
+                    <div
+                        class="bg-surface-dark border border-border-dark rounded-xl p-5 hover:border-primary/30 transition-all duration-300">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+                                    <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-slate-100 font-bold">Agent-007</h4>
+                                    <p class="text-xs text-slate-400">High-Freq Trading</p>
+                                </div>
+                            </div>
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20 shadow-[0_0_10px_rgba(13,242,89,0.1)]">
+                                <span class="size-1.5 rounded-full bg-primary mr-1.5 animate-pulse"></span>
                                 Extracting Budget
                             </span>
-</div>
-<div class="space-y-2">
-<div class="flex justify-between text-sm">
-<span class="text-slate-400">Wallet Balance</span>
-<span class="text-slate-100 font-mono">$4,200.00</span>
-</div>
-<div class="w-full bg-slate-800 rounded-full h-2">
-<div class="bg-gradient-to-r from-primary to-emerald-600 h-2 rounded-full" style="width: 75%"></div>
-</div>
-<div class="flex justify-end text-[10px] text-slate-500 mt-1">75% Capacity</div>
-</div>
-</div>
-<!-- Agent Card 2 -->
-<div class="bg-surface-dark border border-border-dark rounded-xl p-5 hover:border-accent-cyan/30 transition-all duration-300">
-<div class="flex justify-between items-start mb-4">
-<div class="flex items-center gap-3">
-<div class="size-10 rounded-full bg-accent-cyan/10 flex items-center justify-center text-accent-cyan border border-accent-cyan/20">
-<span class="material-symbols-outlined text-xl">code</span>
-</div>
-<div>
-<h4 class="text-slate-100 font-bold">Agent-114</h4>
-<p class="text-xs text-slate-400">System Architect</p>
-</div>
-</div>
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20 shadow-[0_0_10px_rgba(6,182,212,0.1)]">
-<span class="size-1.5 rounded-full bg-accent-cyan mr-1.5 animate-pulse"></span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-400">Wallet Balance</span>
+                                <span class="text-slate-100 font-mono">$4,200.00</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-primary to-emerald-600 h-2 rounded-full"
+                                    style="width: 75%"></div>
+                            </div>
+                            <div class="flex justify-end text-[10px] text-slate-500 mt-1">75% Capacity</div>
+                        </div>
+                    </div>
+                    <!-- Agent Card 2 -->
+                    <div
+                        class="bg-surface-dark border border-border-dark rounded-xl p-5 hover:border-accent-cyan/30 transition-all duration-300">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="size-10 rounded-full bg-accent-cyan/10 flex items-center justify-center text-accent-cyan border border-accent-cyan/20">
+                                    <span class="material-symbols-outlined text-xl">code</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-slate-100 font-bold">Agent-114</h4>
+                                    <p class="text-xs text-slate-400">System Architect</p>
+                                </div>
+                            </div>
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20 shadow-[0_0_10px_rgba(6,182,212,0.1)]">
+                                <span class="size-1.5 rounded-full bg-accent-cyan mr-1.5 animate-pulse"></span>
                                 In DevOps Refactor
                             </span>
-</div>
-<div class="space-y-2">
-<div class="flex justify-between text-sm">
-<span class="text-slate-400">Wallet Balance</span>
-<span class="text-slate-100 font-mono">$1,100.00</span>
-</div>
-<div class="w-full bg-slate-800 rounded-full h-2">
-<div class="bg-gradient-to-r from-accent-cyan to-blue-600 h-2 rounded-full" style="width: 45%"></div>
-</div>
-<div class="flex justify-end text-[10px] text-slate-500 mt-1">45% Capacity</div>
-</div>
-</div>
-<!-- Agent Card 3 -->
-<div class="bg-surface-dark border border-border-dark rounded-xl p-5 hover:border-accent-red/30 transition-all duration-300">
-<div class="flex justify-between items-start mb-4">
-<div class="flex items-center gap-3">
-<div class="size-10 rounded-full bg-accent-red/10 flex items-center justify-center text-accent-red border border-accent-red/20">
-<span class="material-symbols-outlined text-xl">error_outline</span>
-</div>
-<div>
-<h4 class="text-slate-100 font-bold">Agent-909</h4>
-<p class="text-xs text-slate-400">Risk Manager</p>
-</div>
-</div>
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent-red/10 text-accent-red border border-accent-red/20 shadow-[0_0_10px_rgba(239,68,68,0.1)]">
-<span class="size-1.5 rounded-full bg-accent-red mr-1.5"></span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-400">Wallet Balance</span>
+                                <span class="text-slate-100 font-mono">$1,100.00</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-accent-cyan to-blue-600 h-2 rounded-full"
+                                    style="width: 45%"></div>
+                            </div>
+                            <div class="flex justify-end text-[10px] text-slate-500 mt-1">45% Capacity</div>
+                        </div>
+                    </div>
+                    <!-- Agent Card 3 -->
+                    <div
+                        class="bg-surface-dark border border-border-dark rounded-xl p-5 hover:border-accent-red/30 transition-all duration-300">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="size-10 rounded-full bg-accent-red/10 flex items-center justify-center text-accent-red border border-accent-red/20">
+                                    <span class="material-symbols-outlined text-xl">error_outline</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-slate-100 font-bold">Agent-909</h4>
+                                    <p class="text-xs text-slate-400">Risk Manager</p>
+                                </div>
+                            </div>
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent-red/10 text-accent-red border border-accent-red/20 shadow-[0_0_10px_rgba(239,68,68,0.1)]">
+                                <span class="size-1.5 rounded-full bg-accent-red mr-1.5"></span>
                                 Bankrupt
                             </span>
-</div>
-<div class="space-y-2">
-<div class="flex justify-between text-sm">
-<span class="text-slate-400">Wallet Balance</span>
-<span class="text-slate-100 font-mono">$0.00</span>
-</div>
-<div class="w-full bg-slate-800 rounded-full h-2">
-<div class="bg-accent-red h-2 rounded-full" style="width: 0%"></div>
-</div>
-<div class="flex justify-end text-[10px] text-slate-500 mt-1">Liquidated</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Bottom Section: Ledger Table -->
-<section class="pb-6">
-<h3 class="text-slate-100 font-bold text-lg flex items-center gap-2 mb-4 mt-8">
-<span class="material-symbols-outlined text-slate-400">receipt_long</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-400">Wallet Balance</span>
+                                <span class="text-slate-100 font-mono">$0.00</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-accent-red h-2 rounded-full" style="width: 0%"></div>
+                            </div>
+                            <div class="flex justify-end text-[10px] text-slate-500 mt-1">Liquidated</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Bottom Section: Ledger Table -->
+            <section class="pb-6">
+                <h3 class="text-slate-100 font-bold text-lg flex items-center gap-2 mb-4 mt-8">
+                    <span class="material-symbols-outlined text-slate-400">receipt_long</span>
                     Recent Ledger Transactions
                 </h3>
-<div class="bg-surface-dark border border-border-dark rounded-xl overflow-hidden">
-<table class="w-full text-left text-sm">
-<thead class="bg-white/5 text-slate-400 font-medium">
-<tr>
-<th class="px-6 py-4">Timestamp</th>
-<th class="px-6 py-4">Agent ID</th>
-<th class="px-6 py-4">Resource</th>
-<th class="px-6 py-4 text-right">Net P/L</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-border-dark">
-<tr class="hover:bg-white/5 transition-colors">
-<td class="px-6 py-4 text-slate-400 font-mono text-xs">2023-10-24 14:32:01</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-2">
-<div class="size-2 bg-primary rounded-full"></div>
-<span class="text-slate-200">Agent-007</span>
-</div>
-</td>
-<td class="px-6 py-4 text-slate-300">GPU Cluster Alpha</td>
-<td class="px-6 py-4 text-right font-mono text-primary font-medium">+ $1,240.50</td>
-</tr>
-<tr class="hover:bg-white/5 transition-colors">
-<td class="px-6 py-4 text-slate-400 font-mono text-xs">2023-10-24 14:31:45</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-2">
-<div class="size-2 bg-accent-cyan rounded-full"></div>
-<span class="text-slate-200">Agent-114</span>
-</div>
-</td>
-<td class="px-6 py-4 text-slate-300">Data Ingestion (API)</td>
-<td class="px-6 py-4 text-right font-mono text-accent-red font-medium">- $45.00</td>
-</tr>
-<tr class="hover:bg-white/5 transition-colors">
-<td class="px-6 py-4 text-slate-400 font-mono text-xs">2023-10-24 14:30:12</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-2">
-<div class="size-2 bg-primary rounded-full"></div>
-<span class="text-slate-200">Agent-007</span>
-</div>
-</td>
-<td class="px-6 py-4 text-slate-300">Latency Arbitrage</td>
-<td class="px-6 py-4 text-right font-mono text-primary font-medium">+ $890.25</td>
-</tr>
-<tr class="hover:bg-white/5 transition-colors">
-<td class="px-6 py-4 text-slate-400 font-mono text-xs">2023-10-24 14:28:55</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-2">
-<div class="size-2 bg-accent-red rounded-full"></div>
-<span class="text-slate-200">Agent-909</span>
-</div>
-</td>
-<td class="px-6 py-4 text-slate-300">Liquidity Provision</td>
-<td class="px-6 py-4 text-right font-mono text-accent-red font-medium">- $2,100.00</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-</div>
-</main>
-</body></html>
+                <div class="bg-surface-dark border border-border-dark rounded-xl overflow-hidden">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-white/5 text-slate-400 font-medium">
+                            <tr>
+                                <th class="px-6 py-4">Timestamp</th>
+                                <th class="px-6 py-4">Agent ID</th>
+                                <th class="px-6 py-4">Resource</th>
+                                <th class="px-6 py-4 text-right">Net P/L</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ledger-table-body" class="divide-y divide-border-dark">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        // Configuration for the local FastAPI server
+        const API_BASE_URL = 'http://127.0.0.1:8000/api/v1';
+
+        // Fetches and updates the top KPI cards
+        async function fetchMacroKPIs() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/dashboard/macro`);
+                if (!response.ok) throw new Error('API request failed');
+
+                const data = await response.json();
+
+                // Update DOM with actual database metrics
+                document.getElementById('kpi-burn-rate').innerText = `$${(data.daily_usd_burn_rate || 0).toFixed(2)}`;
+                document.getElementById('kpi-success-rate').innerText = `${(data.global_success_rate || 0).toFixed(1)}%`;
+                document.getElementById('kpi-latency').innerText = `${data.avg_system_latency_ms || 0}ms`;
+            } catch (error) {
+                console.error('Error fetching Macro KPIs:', error);
+            }
+        }
+
+        // Fetches the latest database ledger entries and builds the HTML table
+        async function fetchLedger() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/dashboard/ledger`);
+                if (!response.ok) throw new Error('API request failed');
+
+                const transactions = await response.json();
+                const tbody = document.getElementById('ledger-table-body');
+
+                // Clear previous rows to prevent duplication
+                tbody.innerHTML = '';
+
+                transactions.forEach(tx => {
+                    const row = document.createElement('tr');
+                    row.className = 'hover:bg-white/5 transition-colors';
+
+                    // Format timestamp
+                    const dateObj = new Date(tx.timestamp);
+                    const timeString = dateObj.toISOString().replace('T', ' ').substring(0, 19);
+
+                    // Dynamic styling based on profit or loss
+                    const isProfit = tx.net_profit >= 0;
+                    const colorClass = isProfit ? 'text-primary' : 'text-accent-red';
+                    const sign = isProfit ? '+' : '';
+
+                    // Construct the row HTML using Tailwind utility classes
+                    row.innerHTML = `
+                    <td class="px-6 py-4 text-slate-400 font-mono text-xs">${timeString}</td>
+                    <td class="px-6 py-4">
+                        <div class="flex items-center gap-2">
+                            <div class="size-2 bg-slate-400 rounded-full"></div>
+                            <span class="text-slate-200">${tx.agent_id}</span>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 text-slate-300">${tx.resource_used}</td>
+                    <td class="px-6 py-4 text-right font-mono ${colorClass} font-medium">
+                        ${sign} $${tx.net_profit.toFixed(2)}
+                    </td>
+                `;
+                    tbody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching Ledger Data:', error);
+            }
+        }
+
+        // Initialize fetching when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial fetch
+            fetchMacroKPIs();
+            fetchLedger();
+
+            // Polling: Refresh data every 3 seconds for a live trading terminal effect
+            setInterval(() => {
+                fetchMacroKPIs();
+                fetchLedger();
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>
