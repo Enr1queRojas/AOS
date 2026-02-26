@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from ...api.dependencies import get_db
 from ...db import models
 from ...schemas.pydantic_models import RefactorRequest
-from ...core.market_logic import amm, current_usage
+from ...core.market_logic import shared_amm, current_usage
 
 router = APIRouter()
 
@@ -18,7 +18,7 @@ def refactor_agent(req: RefactorRequest, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Agent not found")
         
     resource = "Refactor_DevOps_Resource"
-    premium_cost = amm.get_price(resource)
+    premium_cost = shared_amm.get_price(resource)
     
     if agent.wallet_balance < premium_cost:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Insufficient funds for Refactor")

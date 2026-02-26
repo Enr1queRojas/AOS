@@ -34,21 +34,32 @@ class AutomatedMarketMaker:
     def get_price(self, resource_name: str) -> float:
         return self.current_prices.get(resource_name, self.base_prices.get(resource_name, 1.0))
 
+    def get_prices(self) -> list:
+        """Format prices for the API response."""
+        return [
+            {
+                "resource_name": res,
+                "dynamic_price": price,
+                "market_demand": 0.0 # Placeholder, can be updated with actual state
+            }
+            for res, price in self.current_prices.items()
+        ]
+
 # Global instance for the microservice
-base_prices = {
+BASE_PRICES = {
     "GPT-3.5": 1.0,
     "GPT-4o": 5.0, 
     "Refactor_DevOps_Resource": 10.0
 }
-capacities = {
+CAPACITIES = {
     "GPT-3.5": 100.0,
     "GPT-4o": 20.0,
     "Refactor_DevOps_Resource": 5.0
 }
-amm = AutomatedMarketMaker(base_prices=base_prices, capacities=capacities)
+shared_amm = AutomatedMarketMaker(base_prices=BASE_PRICES, capacities=CAPACITIES)
 
 # Dictionary to track cumulative usage in the current cycle for each resource
-current_usage = {k: 0.0 for k in base_prices.keys()}
+current_usage = {k: 0.0 for k in BASE_PRICES.keys()}
 
 def calculate_reward(
     t_base: float,

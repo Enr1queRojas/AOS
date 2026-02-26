@@ -3,10 +3,10 @@ from core.state import AgenticState
 
 def router_broker_or_devops(state: AgenticState) -> Literal["bancarrota", "devops", "broker"]:
     """
-    Enrutador Post-Evaluación:
-    - 'bancarrota': Si el wallet del agente es menor o igual a 0.
-    - 'devops': Si eligió la refactorización profunda (Resource C).
-    - 'broker': Flujo normal hacia el AMM para ajustar el mercado.
+    Post-Evaluation Router:
+    - 'bancarrota': If wallet <= 0.
+    - 'devops': If deep refactoring (Resource C) was chosen.
+    - 'broker': Normal flow to AMM.
     """
     wallet = state.get("agent_wallet", 0.0)
     chosen_resource = state["metrics"].get("chosen_resource", "")
@@ -20,8 +20,10 @@ def router_broker_or_devops(state: AgenticState) -> Literal["bancarrota", "devop
     return "broker"
 
 def router_continue(state: AgenticState) -> Literal["siguiente_tarea", "fin"]:
-    """Decide si ejecuta una siguiente iteración simulada o termina la simulación."""
-    task_count = len([h for h in state.get("history", []) if h.startswith("Evaluador:")])
-    if task_count >= 5: # Termina después de simular 5 tareas
+    """Decides whether to execute the next simulated iteration or end."""
+    # We now check for 'Evaluador (API)' instead of 'Evaluador:'
+    task_count = len([h for h in state.get("history", []) if h.startswith("Evaluador (API)")])
+    
+    if task_count >= 5: # Ends after simulating 5 tasks
         return "fin"
     return "siguiente_tarea"

@@ -1,14 +1,11 @@
 from fastapi import APIRouter
 from typing import List
 from ...schemas.pydantic_models import MarketTickerResponse
-from ...core.market_logic import AutomatedMarketMaker
+from ...core.market_logic import shared_amm
 
 router = APIRouter()
-amm = AutomatedMarketMaker()
 
 @router.get("/ticker", response_model=List[MarketTickerResponse])
 def get_ticker():
-    """
-    Devuelve los precios actuales instanciando o consultando la lógica del AMM.
-    """
-    return amm.get_prices()
+    """Returns the current dynamic prices calculated by the shared AMM."""
+    return shared_amm.get_prices()

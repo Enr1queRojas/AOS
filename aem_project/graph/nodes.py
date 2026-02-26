@@ -15,7 +15,11 @@ def get_operative_node(amm=None):
         tau = 2.0
         try:
             resp = requests.get(f"{API_BASE_URL}/market/ticker", timeout=5)
-            ticker = resp.json() if resp.status_code == 200 else {}
+            if resp.status_code == 200:
+                ticker_data = resp.json()
+                ticker = {item["resource_name"]: item["dynamic_price"] for item in ticker_data}
+            else:
+                ticker = {"GPT-3.5": 1.0, "GPT-4o": 5.0, "Refactor_DevOps_Resource": 10.0}
         except Exception:
             ticker = {"GPT-3.5": 1.0, "GPT-4o": 5.0, "Refactor_DevOps_Resource": 10.0}
             
