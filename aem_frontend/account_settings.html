@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AEM Terminal - Account Settings</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0df259",
+                        "background-dark": "#09090b",
+                        "surface-dark": "#121214",
+                        "border-dark": "#27272a",
+                    },
+                    fontFamily: {
+                        display: ["Space Grotesk", "sans-serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="w-64 h-screen border-r border-border-dark flex flex-col bg-surface-dark/50 shrink-0">
+        <!-- Sidebar content same as others -->
+        <div class="p-6 flex items-center gap-3 border-b border-border-dark/50">
+            <div
+                class="size-10 rounded-lg bg-gradient-to-br from-primary to-emerald-800 flex items-center justify-center">
+                <span class="material-symbols-outlined text-black font-bold">terminal</span>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg">AEM Terminal</h1>
+            </div>
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-100 transition-colors"
+                href="index.html">
+                <span class="material-symbols-outlined">monitoring</span> Dashboard
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 border border-primary/20 text-primary"
+                href="#">
+                <span class="material-symbols-outlined">person</span> Account Settings
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden">
+        <header class="p-6 border-b border-border-dark">
+            <h2 class="text-2xl font-bold">Account Settings</h2>
+            <p class="text-slate-400 text-sm">Manage your profile, preferences, and security.</p>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6 w-full max-w-3xl mx-auto space-y-8">
+            <!-- Profile Info -->
+            <section class="bg-surface-dark border border-border-dark rounded-xl p-6">
+                <h3 class="text-lg font-bold border-b border-border-dark pb-4 mb-4">Profile Information</h3>
+                <div class="flex gap-6 items-start">
+                    <div class="size-20 rounded-full bg-slate-700 bg-center bg-cover border-2 border-primary"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC055JisbznEdSMvFdDzmUfuhpOKKGk0tUcUDFmDAWl1dTF4NAbFENPXQ6dqe1nFs56vSpweUNCBOT7dnHzyZOdoDl8Yy408yL2YQQT-_RCNXlxVTdXQEQYTKuR-qsHWvVadNjix_P9YBH6A1NzecDY7NA9gGx_nKyTHbZ5gT72JODjmsjUOKHN3WYwVoRD1wdkFeHna3qEr03N5EVneOrkKIYDY-syzwxIEmjuasXbZndR-v9qHT1Pus2djlp41soJD9xvbu2_1koN')">
+                    </div>
+                    <div class="flex-1 space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-1">Full Name</label>
+                                <input type="text" value="System Administrator"
+                                    class="w-full bg-background-dark border border-border-dark rounded-lg p-2.5">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-1">Email Address</label>
+                                <input type="email" value="admin@aem.market"
+                                    class="w-full bg-background-dark border border-border-dark rounded-lg p-2.5 text-slate-500"
+                                    disabled>
+                            </div>
+                        </div>
+                        <button
+                            class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm transition-colors">UPDATE
+                            PROFILE</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interface Preferences -->
+            <section class="bg-surface-dark border border-border-dark rounded-xl p-6">
+                <h3 class="text-lg font-bold border-b border-border-dark pb-4 mb-4">Interface Preferences</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-medium text-slate-200">Terminal Theme</p>
+                            <p class="text-xs text-slate-500">Choose the UI color palette</p>
+                        </div>
+                        <select class="bg-background-dark border border-border-dark rounded-lg p-2 text-sm">
+                            <option value="matrix" selected>Hacker Matrix (Dark/Green)</option>
+                            <option value="cyberpunk">Cyberpunk (Dark/Neon)</option>
+                            <option value="dracula">Dracula (Dark/Purple)</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-medium text-slate-200">Live Animations</p>
+                            <p class="text-xs text-slate-500">Toggle pulsing graphs and live UI updates</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" checked class="sr-only peer">
+                            <div
+                                class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>

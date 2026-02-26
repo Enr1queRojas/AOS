@@ -1,0 +1,47 @@
+# =========================
+# Virtual Environments
+# =========================
+venv/
+.venv/
+env/
+ENV/
+
+# =========================
+# Environment Variables (CRITICAL!)
+# =========================
+.env
+.env.local
+.env.development
+.env.production
+!.env.example 
+
+# =========================
+# Local Databases
+# =========================
+*.db
+*.sqlite3
+db/aem_ledger.db
+
+# =========================
+# Python / Compiled files
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# =========================
+# Logs and Temporary Files
+# =========================
+*.log
+logs/
+temp/
+
+# =========================
+# IDEs and Operating Systems
+# =========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

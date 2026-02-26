@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AEM Terminal - System Settings</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0df259",
+                        "background-dark": "#09090b",
+                        "surface-dark": "#121214",
+                        "border-dark": "#27272a",
+                        "accent-cyan": "#06b6d4",
+                        "accent-purple": "#a855f7",
+                        "accent-red": "#ef4444",
+                    },
+                    fontFamily: {
+                        display: ["Space Grotesk", "sans-serif"],
+                        mono: ["Courier New", "monospace"],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display min-h-screen flex overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="w-64 h-screen border-r border-border-dark flex flex-col bg-surface-dark/50 shrink-0">
+        <div class="p-6 flex items-center gap-3 border-b border-border-dark/50">
+            <div
+                class="size-10 rounded-lg bg-gradient-to-br from-primary to-emerald-800 flex items-center justify-center shadow-[0_0_15px_rgba(13,242,89,0.3)]">
+                <span class="material-symbols-outlined text-black font-bold">terminal</span>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg tracking-tight">AEM Terminal</h1>
+                <p class="text-xs text-slate-400 font-mono">v2.4.0-stable</p>
+            </div>
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-white/5 transition-all duration-200 group"
+                href="index.html">
+                <span class="material-symbols-outlined group-hover:text-primary transition-colors">monitoring</span>
+                <span class="font-medium text-sm">Macro Dashboard</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-white/5 transition-all duration-200 group"
+                href="#">
+                <span class="material-symbols-outlined group-hover:text-primary transition-colors">smart_toy</span>
+                <span class="font-medium text-sm">Agent Arena</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-white/5 transition-all duration-200 group"
+                href="#">
+                <span class="material-symbols-outlined group-hover:text-primary transition-colors">receipt_long</span>
+                <span class="font-medium text-sm">Ledger Audit</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 border border-primary/20 text-primary group transition-all duration-200"
+                href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-medium text-sm">System Settings</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <header
+            class="p-6 border-b border-border-dark shrink-0 flex justify-between items-center z-10 bg-surface-dark/80 backdrop-blur-md">
+            <div>
+                <h2 class="text-2xl font-bold">System Configuration</h2>
+                <p class="text-slate-400 text-sm">Manage global market rules and environment variables</p>
+            </div>
+            <button
+                class="bg-primary hover:bg-emerald-500 text-black px-4 py-2 rounded-lg font-bold transition-colors shadow-[0_0_15px_rgba(13,242,89,0.3)]">Save
+                Changes</button>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6 z-10 w-full max-w-4xl mx-auto space-y-8">
+            <!-- Market Volatility Parameters -->
+            <section class="bg-surface-dark border border-border-dark rounded-xl p-6">
+                <h3 class="text-lg font-bold flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-primary">analytics</span> Market Dynamics
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-400 mb-2">Base Volatility Index (VIX)</label>
+                        <input type="range" min="1" max="100" value="35"
+                            class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary">
+                        <div class="flex justify-between text-xs text-slate-500 mt-2">
+                            <span>Stable (1.0)</span>
+                            <span class="text-primary font-bold">Medium (35.0)</span>
+                            <span>Chaotic (100.0)</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-400 mb-2">Demand Curve Elasticity</label>
+                        <select
+                            class="w-full bg-background-dark border border-border-dark rounded-lg p-2.5 text-sm focus:ring-1 focus:ring-primary focus:border-primary">
+                            <option value="linear">Linear Scaling</option>
+                            <option value="exponential" selected>Exponential Decay</option>
+                            <option value="logarithmic">Logarithmic Saturation</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resource Pricing -->
+            <section class="bg-surface-dark border border-border-dark rounded-xl p-6">
+                <h3 class="text-lg font-bold flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-accent-cyan">memory</span> Base Resource Pricing
+                </h3>
+                <div class="space-y-4">
+                    <div
+                        class="flex items-center justify-between p-4 bg-background-dark/50 border border-border-dark rounded-lg">
+                        <div>
+                            <p class="font-medium text-slate-200">GPT-4o API Tokens</p>
+                            <p class="text-xs text-slate-500">Base cost per 1K inputs before AMM scaling</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-slate-400">$</span>
+                            <input type="number" step="0.001" value="0.005"
+                                class="w-24 bg-background-dark border border-border-dark rounded-lg p-2 text-sm text-right font-mono focus:ring-1 focus:ring-accent-cyan focus:border-accent-cyan">
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-center justify-between p-4 bg-background-dark/50 border border-border-dark rounded-lg">
+                        <div>
+                            <p class="font-medium text-slate-200">DevOps Refactor Operation</p>
+                            <p class="text-xs text-slate-500">Flat rate base prior to agent complexity multiplier</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-slate-400">$</span>
+                            <input type="number" step="0.5" value="10.0"
+                                class="w-24 bg-background-dark border border-border-dark rounded-lg p-2 text-sm text-right font-mono focus:ring-1 focus:ring-accent-cyan focus:border-accent-cyan">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Governance Variables -->
+            <section class="bg-surface-dark border border-border-dark rounded-xl p-6">
+                <h3 class="text-lg font-bold flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-accent-purple">account_balance</span> Global Governance
+                </h3>
+                <div class="space-y-4">
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="checkbox" checked
+                            class="w-5 h-5 rounded border-border-dark bg-background-dark text-accent-purple focus:ring-accent-purple focus:ring-offset-background-dark">
+                        <div>
+                            <p class="text-slate-200 font-medium">Auto-Liquidate Bankrupt Agents</p>
+                            <p class="text-slate-500 text-xs">Instantly terminate agents dropping below $0.00 wallet
+                                balance.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="checkbox" checked
+                            class="w-5 h-5 rounded border-border-dark bg-background-dark text-accent-purple focus:ring-accent-purple focus:ring-offset-background-dark">
+                        <div>
+                            <p class="text-slate-200 font-medium">Allow Short Selling (Futures)</p>
+                            <p class="text-slate-500 text-xs">Enable agents to borrow compute tokens against future
+                                yields.</p>
+                        </div>
+                    </label>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>

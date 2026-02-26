@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AEM Terminal - API Keys</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0df259",
+                        "background-dark": "#09090b",
+                        "surface-dark": "#121214",
+                        "border-dark": "#27272a",
+                    },
+                    fontFamily: {
+                        display: ["Space Grotesk", "sans-serif"],
+                        mono: ["Courier New", "monospace"],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="w-64 h-screen border-r border-border-dark flex flex-col bg-surface-dark/50 shrink-0">
+        <div class="p-6 flex items-center gap-3 border-b border-border-dark/50">
+            <div
+                class="size-10 rounded-lg bg-gradient-to-br from-primary to-emerald-800 flex items-center justify-center">
+                <span class="material-symbols-outlined text-black font-bold">terminal</span>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg">AEM Terminal</h1>
+            </div>
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-100 transition-colors"
+                href="index.html">
+                <span class="material-symbols-outlined">monitoring</span> Dashboard
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 border border-primary/20 text-primary"
+                href="#">
+                <span class="material-symbols-outlined">key</span> API Keys Management
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden">
+        <header
+            class="p-6 border-b border-border-dark flex justify-between items-center bg-surface-dark/80 backdrop-blur-md">
+            <div>
+                <h2 class="text-2xl font-bold">API & Integrations</h2>
+                <p class="text-slate-400 text-sm">Manage API Keys for automated agents to access the marketplace.</p>
+            </div>
+            <button
+                class="bg-white text-black px-4 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-slate-200 transition-colors">
+                <span class="material-symbols-outlined text-sm">add</span> GENERATE NEW KEY
+            </button>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6 max-w-5xl mx-auto w-full space-y-6">
+            <!-- Active Keys -->
+            <div class="bg-surface-dark border border-border-dark rounded-xl overflow-hidden">
+                <div class="p-4 border-b border-border-dark bg-white/5">
+                    <h3 class="font-bold flex items-center gap-2"><span
+                            class="material-symbols-outlined text-primary">key</span> Active Secret Keys</h3>
+                </div>
+                <table class="w-full text-left text-sm">
+                    <thead class="text-slate-400 bg-background-dark/50 border-b border-border-dark">
+                        <tr>
+                            <th class="px-6 py-3 font-medium">NAME</th>
+                            <th class="px-6 py-3 font-medium">KEY PREFIX</th>
+                            <th class="px-6 py-3 font-medium">LAST USED</th>
+                            <th class="px-6 py-3 font-medium text-right">ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border-dark">
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 font-medium text-slate-200">Production Node - Agent Core</td>
+                            <td class="px-6 py-4 font-mono text-slate-400">sk_live_8F92...</td>
+                            <td class="px-6 py-4 text-primary text-xs">2 mins ago</td>
+                            <td class="px-6 py-4 text-right">
+                                <button
+                                    class="text-red-400 hover:text-red-300 text-xs px-3 py-1 bg-red-400/10 rounded">Revoke</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 font-medium text-slate-200">Staging Env - Evaluator Node</td>
+                            <td class="px-6 py-4 font-mono text-slate-400">sk_test_B421...</td>
+                            <td class="px-6 py-4 text-slate-500 text-xs">Yesterday</td>
+                            <td class="px-6 py-4 text-right">
+                                <button
+                                    class="text-red-400 hover:text-red-300 text-xs px-3 py-1 bg-red-400/10 rounded">Revoke</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Webhooks Configuration -->
+            <section class="bg-surface-dark border border-border-dark rounded-xl p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-bold flex items-center gap-2 text-lg"><span
+                            class="material-symbols-outlined">webhook</span> System Webhooks</h3>
+                    <button class="text-primary hover:underline text-sm font-medium">Add Webhook Endpoint</button>
+                </div>
+                <div
+                    class="p-4 bg-background-dark border border-border-dark rounded-lg flex items-center justify-between">
+                    <div>
+                        <p class="font-medium text-emerald-400 flex items-center gap-2">
+                            <span class="size-2 rounded-full bg-emerald-400 shadow-[0_0_5px_#34d399]"></span>
+                            Terminal Socket Event Stream
+                        </p>
+                        <p class="text-xs text-slate-500 font-mono mt-1">wss://api.aem.market/v1/events</p>
+                    </div>
+                    <span
+                        class="bg-emerald-400/10 text-emerald-400 text-xs px-2 py-1 rounded border border-emerald-400/20">Active</span>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
