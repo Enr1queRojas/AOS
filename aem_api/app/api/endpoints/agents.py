@@ -16,6 +16,15 @@ def get_wallet(agent_id: str, db: Session = Depends(get_db)):
     if not agent:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Agent not found")
     return agent
+@router.post("/{agent_id}/topup")
+def topup_agent(agent_id: str, amount: float = 100.0, db: Session = Depends(get_db)):
+    """Add funds to a specific agent from the UI."""
+    agent = db.query(models.AgentRecord).filter(models.AgentRecord.id == agent_id).first()
+    if not agent:
+        raise HTTPException(status_code=404, detail="Agent not found")
+    agent.wallet_balance += amount
+    db.commit()
+    return {"new_balance": agent.wallet_balance}
 
 @router.post("/{agent_id}/settle")
 def settle_transaction(agent_id: str, request: SettleRequest, db: Session = Depends(get_db)):

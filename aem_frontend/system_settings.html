@@ -191,7 +191,43 @@
                     </label>
                 </div>
             </section>
+
+            <!-- Danger Zone -->
+            <section class="bg-danger/5 border border-danger/30 rounded-xl p-6 mb-8 mt-4">
+                <h3 class="text-lg font-bold flex items-center gap-2 mb-4 text-danger">
+                    <span class="material-symbols-outlined text-danger">warning</span> Danger Zone
+                </h3>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="font-medium text-slate-200">Reset Market State</p>
+                        <p class="text-xs text-slate-500">Clears all ledger transactions and returns base resource
+                            prices to their initial values.</p>
+                    </div>
+                    <button onclick="resetMarket()"
+                        class="bg-danger hover:bg-red-600 text-white px-4 py-2 rounded-lg font-bold transition-colors shadow-lg shadow-danger/20">
+                        Reset Market
+                    </button>
+                </div>
+            </section>
         </div>
+        <script>
+            // Configuration for the local FastAPI server
+            const API_BASE_URL = 'http://127.0.0.1:8000/api/v1';
+
+            async function resetMarket() {
+                if (!confirm("Are you sure you want to absolute reset the market? This clears the entire ledger.")) return;
+                try {
+                    const response = await fetch(`${API_BASE_URL}/market/reset`, { method: 'POST' });
+                    if (response.ok) {
+                        alert("Market reset successfully.");
+                    } else {
+                        alert("Failed to reset market. Make sure backend is running.");
+                    }
+                } catch (err) {
+                    console.error('Error resetting market:', err);
+                }
+            }
+        </script>
     </main>
 </body>
 
